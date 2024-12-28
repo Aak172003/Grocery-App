@@ -1,3 +1,37 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  // when code compoiles so if i write @components , so it automatically detect its absolute path with ../../../
+  
+  
+  "compilerOptions": {
+  "typeRoots": ["node_modules/@types", "src/types"],
+  "types": ["jest"],
+  // Represents root directory
+  "baseUrl": "./src",
+
+  // Short paths -> Absolute Paths 
+
+  // if i gave ./ as base url so i have to add paths in below manner 
+  
+  // "@assets/*":["src/assets/*"],
+  // "@features/*":["src/features/*"],
+  // "@service/*":["src/service/*"],
+  // "@navigation/*":["src/navigation/*"],
+  // "@components/*":["src/components/*"],
+  // "@state/*":["src/state/*"],
+  // "@utils/*":["src/utils/*"],
+  // "@types/*":["src/types/*"],
+
+
+  "paths": {
+    "@assets/*":["assets/*"],
+    "@features/*":["features/*"],
+    "@service/*":["service/*"],
+    "@navigation/*":["navigation/*"],
+    "@components/*":["components/*"],
+    "@state/*":["state/*"],
+    "@utils/*":["utils/*"],
+    "@types/*":["types/*"],
+  }
+  }
 }

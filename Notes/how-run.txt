@@ -1,0 +1,2 @@
+How run our project
+npx react-native run-android
