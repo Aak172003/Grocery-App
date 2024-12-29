@@ -30,7 +30,7 @@ const Navigation = () => {
                     name="CustomerLogin"
                     component={CustomerLogin}
                     // This is responsible to show header
-                    options={{ headerShown: true, animation: 'fade' }}
+                    options={{ headerShown: false, animation: 'fade' }}
                 />
 
             </Stack.Navigator>
