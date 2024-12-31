@@ -1,20 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { FC } from 'react'
-
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Animated, StyleSheet, View } from 'react-native'
+import React, { useRef, useState } from 'react'
+import { GestureHandlerRootView, PanGestureHandler, State } from 'react-native-gesture-handler'
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView'
 import ProductSlider from '@components/login/ProductSlider'
+import { resetAndNavigate } from '@utils/NavigationUtils'
 
-const CustomerLogin: FC = () => {
+const CustomerLogin = () => {
 
     return (
         <GestureHandlerRootView style={styles.container}>
             <View style={styles.container}>
-
-                {/* This is custom safe area view , this make all things present in same boundary */}
                 <CustomSafeAreaView>
-                    {/* <Text>Aakash Prajapati</Text> */}
                     <ProductSlider />
+
+                    {/* Image And Login Input Field */}
 
                 </CustomSafeAreaView>
             </View>
@@ -23,10 +22,14 @@ const CustomerLogin: FC = () => {
 }
 
 const styles = StyleSheet.create({
-    // Which means this show on entire screen
     container: {
         flex: 1,
-        backgroundColor: 'red'
-    }
+        backgroundColor: 'red',
+    },
+    gestureArea: {
+        flex: 1,
+        backgroundColor: 'rgba(20, 9, 9, 0.3)',
+    },
 })
+
 export default CustomerLogin

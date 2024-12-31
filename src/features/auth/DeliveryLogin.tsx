@@ -4,7 +4,7 @@ import React from 'react'
 const DeliveryLogin = () => {
     return (
         <View>
-            <Text>DeliveryLogin</Text>
+            <Text style={{ backgroundColor: "red", color: "white", textAlign: 'center' }}>DeliveryLogin</Text>
         </View>
     )
 }

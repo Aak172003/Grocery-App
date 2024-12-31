@@ -11,15 +11,12 @@ import { useAuthStore } from '@state/authStore'
 import { resetAndNavigate } from '@utils/NavigationUtils'
 
 // Geo Location Configuration
-
 GeoLocation.setRNConfiguration({
     skipPermissionRequests: false,
     authorizationLevel: 'always',
     enableBackgroundLocationUpdates: true,
     locationProvider: 'auto'
 })
-
-
 
 const SplashScreen = () => {
 
