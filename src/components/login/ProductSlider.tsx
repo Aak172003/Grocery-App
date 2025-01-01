@@ -29,13 +29,16 @@ const ProductSlider = () => {
             setGestureSequence(newSequence)
             console.log('direction ------------- ', direction)
 
-            if (newSequence.join('') === 'updownleftright') {
+            if (newSequence.join('') === 'updownupleftright') {
                 setGestureSequence([])
                 console.log('Gesture Sequence Matched!')
                 resetAndNavigate('DeliveryLogin')
             }
         }
     }
+
+
+    console.log("gestureSequence :::::::::::::; ", gestureSequence)
 
     const onGestureEvent = Animated.event(
         [
@@ -71,7 +74,7 @@ const ProductSlider = () => {
                 <PanGestureHandler onHandlerStateChange={handleGesture} onGestureEvent={onGestureEvent}>
                     <Animated.View
                         style={[
-                            styles.gestureArea,
+                            // styles.gestureArea,
                             {
                                 transform: [
                                     { translateX: translateX },
@@ -141,10 +144,9 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'contain',
     },
-    gestureArea: {
-        ...StyleSheet.absoluteFillObject,
-        // backgroundColor: 'rgba(20, 9, 9, 0.3)',
-    },
+    // gestureArea: {
+    //     ...StyleSheet.absoluteFillObject,
+    // },
 })
 
 export default ProductSlider
