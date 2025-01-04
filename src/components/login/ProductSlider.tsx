@@ -111,9 +111,8 @@ const MemoizedRow = React.memo(Row)
 
 const styles = StyleSheet.create({
     container: {
-        height: screenHeight * 0.6,
+        height: screenHeight * 0.54,
         justifyContent: 'space-between',
-        paddingVertical: 10,
         overflow: 'hidden',
     },
     gridContainer: {

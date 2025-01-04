@@ -6,6 +6,8 @@ import SplashScreen from '@features/auth/SplashScreen'
 import { navigationRef } from '@utils/NavigationUtils'
 import CustomerLogin from '@features/auth/CustomerLogin'
 import DeliveryLogin from '@features/auth/DeliveryLogin'
+import ProductDashboard from '@features/dashboard/ProductDashboard'
+import DeliveryDashboard from '@features/delivery/DeliveryDashboard'
 
 const Stack = createNativeStackNavigator()
 
@@ -24,6 +26,16 @@ const Navigation = () => {
                     options={{ headerShown: false }}
                 />
                 <Stack.Screen
+                    name="ProductDashboard"
+                    component={ProductDashboard}
+                    options={{ headerShown: true }}
+                />
+                <Stack.Screen
+                    name="DeliveryDashboard"
+                    component={DeliveryDashboard}
+                    options={{ headerShown: true }}
+                />
+                <Stack.Screen
                     name="DeliveryLogin"
                     component={DeliveryLogin}
                     options={{ headerShown: false }}
@@ -33,6 +45,7 @@ const Navigation = () => {
                     component={CustomerLogin}
                     options={{ headerShown: false }}
                 />
+
             </Stack.Navigator>
         </NavigationContainer>
     )

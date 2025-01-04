@@ -1,18 +1,48 @@
-import { Image, StyleSheet, View } from 'react-native';
-import React, { useState } from 'react';
+import { Alert, Animated, Image, Keyboard, SafeAreaView, StyleSheet, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView';
 import ProductSlider from '@components/login/ProductSlider';
 import logo from '../../assets/images/logo.png';
 import CustomText from '@components/ui/CustomText';
-import { Fonts } from '@utils/Constants';
+import { Colors, Fonts, lightColors } from '@utils/Constants';
 import CustomInput from '@components/ui/CustomInput';
 import { TEXT_APP_SLOGAN } from '../../../text';
-
+import CustomButoon from '@components/ui/CustomButton';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { resetAndNavigate } from '@utils/NavigationUtils';
+import { customerLogin } from '@service/AuthService';
 const CustomerLogin = () => {
 
     const [phoneNumber, setPhoneNumber] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const handleAuth = async () => {
+        console.log("click on continue ")
+        Keyboard.dismiss()
+        setLoading(true)
+        try {
+
+
+            console.log("inside try")
+            const data = await customerLogin(phoneNumber)
+
+            // console.log("data -------------------- ", data)
+
+            if (data) {
+                resetAndNavigate('ProductDashboard')
+            } else {
+                console.log("found error while getting response ")
+            }
+        } catch (error) {
+            Alert.alert("Login Failed ")
+            setLoading(false)
+        }
+        finally {
+            setLoading(false)
+        }
+
+    }
 
     return (
         <GestureHandlerRootView style={styles.container}>
@@ -20,7 +50,9 @@ const CustomerLogin = () => {
                 <CustomSafeAreaView>
                     <ProductSlider />
 
-                    <View style={styles.content}>
+
+
+                    <View style={styles.content} >
                         <Image source={logo} style={styles.logo} />
 
                         <CustomText varient='h2' fontFamily={Fonts.Bold}>
@@ -45,8 +77,22 @@ const CustomerLogin = () => {
                             placeholder='Enter Mobile Number'
                             inputMode='numeric'
                         />
+
+
+                        <CustomButoon
+                            disabled={phoneNumber?.length != 10}
+                            onPress={() => handleAuth()}
+                            loading={loading}
+                            title='Continue' />
                     </View>
                 </CustomSafeAreaView>
+
+
+                <View style={styles.footer}>
+                    <SafeAreaView>
+                        <CustomText fontSize={RFValue(6)}>By Continuoing , you agree to our Terms of Service & Privacy Policy</CustomText>
+                    </SafeAreaView>
+                </View>
             </View>
         </GestureHandlerRootView>
     );
@@ -59,12 +105,10 @@ const styles = StyleSheet.create({
     },
     content: {
         flex: 1,
-        // justifyContent: 'center', // Vertically center
-        alignItems: 'center', // Horizontally center
+        alignItems: 'center',
         width: '100%',
         backgroundColor: 'white',
         paddingHorizontal: 20,
-        paddingTop: 20
     },
     logo: {
         height: 50,
@@ -80,7 +124,21 @@ const styles = StyleSheet.create({
     phoneText: {
         marginLeft: 10,
         marginRight: 10
-    }
+    },
+    footer: {
+        borderTopWidth: 0.8,
+        borderColor: Colors.border,
+        paddingBottom: 10,
+        zIndex: 22,
+        position: 'absolute',
+        bottom: 0,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 10,
+        backgroundColor: "#f8f9fc",
+        width: '100%'
+    },
+
 });
 
 export default CustomerLogin;

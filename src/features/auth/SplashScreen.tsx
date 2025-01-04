@@ -3,12 +3,14 @@ import React, { useEffect } from 'react'
 import { screenHeight, screenWidth } from '@utils/Scaling'
 import Logo from '@assets/images/splash_logo.jpeg'
 import { Colors } from '@utils/Constants'
+import { jwtDecode } from 'jwt-decode'
 
 import GeoLocation from '@react-native-community/geolocation'
 import Geolocation from '@react-native-community/geolocation'
-import { tokenStoage } from '@state/storage'
+import { tokenStorage } from '@state/storage'
 import { useAuthStore } from '@state/authStore'
 import { resetAndNavigate } from '@utils/NavigationUtils'
+import { refetchUser, refresh_token } from '@service/AuthService'
 
 // Geo Location Configuration
 GeoLocation.setRNConfiguration({
@@ -18,17 +20,64 @@ GeoLocation.setRNConfiguration({
     locationProvider: 'auto'
 })
 
+interface DecodedToken {
+    exp: number
+}
+
+
+
 const SplashScreen = () => {
 
     const { user, setUser } = useAuthStore()
 
     const tokenCheck = async () => {
-        const accessToken = tokenStoage.getString('accessToken') as string
-        const refreshToken = tokenStoage.getString('refreshToken') as string
+        const accessToken = tokenStorage.getString('accessToken') as string
+        const refreshToken = tokenStorage.getString('refreshToken') as string
 
 
         if (accessToken) {
+            const decodedAccessToken = jwtDecode<DecodedToken>(accessToken)
+            const decodedRefreshToken = jwtDecode<DecodedToken>(refreshToken)
 
+
+            console.log("decodedAccessToken :::::::::::::::: ", decodedAccessToken)
+            console.log("decodedRefreshToken :::::::::::::::: ", decodedRefreshToken)
+
+            const currentTime = Date.now() / 1000
+
+
+
+            // so basically first expires accesstoken , 
+            if (decodedRefreshToken?.exp < currentTime) {
+                resetAndNavigate('CustomerLogin')
+                Alert.alert("Session Expired", "Please Login Again")
+                return false
+            }
+
+
+            if (decodedAccessToken?.exp < currentTime) {
+                try {
+
+                    console.log("access token expires")
+                    // if token expires but refreshToken not expires , then refreshtoken will refresh accessToken
+                    //             // refresh_token()
+                    //             // await refetchUser(setUser)
+
+                } catch (error) {
+                    console.log("error ==================== ", error)
+                    Alert.alert("There was an error while refreshing accessToken")
+                    return false
+                }
+            }
+
+
+
+            if (user?.role == "Customer") {
+                resetAndNavigate("ProductDashboard")
+            } else {
+                resetAndNavigate("DeliveryDashboard")
+            }
+            return true
         }
 
         resetAndNavigate("CustomerLogin")
