@@ -4,7 +4,7 @@ import { MMKV } from 'react-native-mmkv'
 
 // This mmkv is fast because this is written using c++
 // This perfom synchronously operation 
-export const tokenStoage = new MMKV({
+export const tokenStorage = new MMKV({
     id: "token-storage",
     encryptionKey: "some_secret_key",
 

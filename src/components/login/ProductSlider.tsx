@@ -29,7 +29,7 @@ const ProductSlider = () => {
             setGestureSequence(newSequence)
             console.log('direction ------------- ', direction)
 
-            if (newSequence.join('') === 'updownupleftright') {
+            if (newSequence.join('') === 'up') {
                 setGestureSequence([])
                 console.log('Gesture Sequence Matched!')
                 resetAndNavigate('DeliveryLogin')
@@ -74,7 +74,7 @@ const ProductSlider = () => {
                 <PanGestureHandler onHandlerStateChange={handleGesture} onGestureEvent={onGestureEvent}>
                     <Animated.View
                         style={[
-                            // styles.gestureArea,
+                            styles.gestureArea,
                             {
                                 transform: [
                                     { translateX: translateX },
@@ -111,9 +111,8 @@ const MemoizedRow = React.memo(Row)
 
 const styles = StyleSheet.create({
     container: {
-        height: screenHeight * 0.6,
+        height: screenHeight * 0.54,
         justifyContent: 'space-between',
-        paddingVertical: 10,
         overflow: 'hidden',
     },
     gridContainer: {
@@ -144,9 +143,10 @@ const styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'contain',
     },
-    // gestureArea: {
-    //     ...StyleSheet.absoluteFillObject,
-    // },
+    gestureArea: {
+        ...StyleSheet.absoluteFillObject,
+        backgroundColor: 'red'
+    },
 })
 
 export default ProductSlider
