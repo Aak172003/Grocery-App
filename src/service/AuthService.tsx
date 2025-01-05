@@ -4,6 +4,8 @@ import { BASE_URL } from './Config'
 import { tokenStorage } from '@state/storage'
 import { useAuthStore } from '@state/authStore'
 import { resetAndNavigate } from '@utils/NavigationUtils'
+import { appAxios } from './apiInterceptors'
+import { Alert } from 'react-native'
 export const customerLogin = async (phoneNo: string) => {
 
 
@@ -64,9 +66,11 @@ export const refresh_token = async () => {
         const { message } = data
 
 
-
-        // tokenStorage.set("accessToken", newAccessToken)
+        console.log("set token to token storage ")
+        tokenStorage.set("accessToken", newAccessToken)
         // tokenStorage.set("refreshToken", newRefreshToken)
+
+        Alert.alert("this is message --------------- ", message)
 
         return newAccessToken
     } catch (error) {
@@ -81,6 +85,12 @@ export const refresh_token = async () => {
 export const refetchUser = async (setUser: any) => {
 
     try {
+        // Just have to refrech user create api intercepter 
+        const { data } = await appAxios.get('/user')
+
+        console.log("this is data ----- via refect user ------------ ", data)
+        setUser(data.user)
+
 
     } catch (error) {
         console.log("Error while Refetching User : ", error)
@@ -88,4 +98,44 @@ export const refetchUser = async (setUser: any) => {
 
 
 
+}
+
+
+
+export const DeliveryPartnerLogin = async (email: string, password: string) => {
+
+
+    console.log("email ::::::::::::::::::::::::::::::: ", email)
+    console.log("password ::::::::::::::::::::::::::::::: ", password)
+    try {
+
+        console.log("inside 11111111111111111111111111111111111111111111111111111111")
+        const { data } = await axios.post(`http://192.168.29.236:8000/api/v1/delivery-partner/login`, { email, password })
+
+        console.log("2222222222222222222222222222222222")
+
+        console.log("data ------------------- ", data)
+
+        const { accessToken, refreshToken, deliveryPartner } = data
+
+        console.log("accessToken ::::::::::::::::::::: ", accessToken)
+
+        console.log("refreshToken : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :  ", refreshToken)
+        console.log("deliveryPartner : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : : :  ", deliveryPartner)
+
+
+        tokenStorage.set("accessToken", accessToken)
+        tokenStorage.set("refreshToken", refreshToken)
+
+        const { setUser } = useAuthStore.getState()
+        setUser(deliveryPartner)
+
+        return data
+
+    } catch (error) {
+        console.log("Login Error : ", error)
+        // clear all keys and values pair
+        tokenStorage.clearAll()
+        resetAndNavigate("CustomerLogin")
+    }
 }

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Alert } from 'react-native'
+import { View, StyleSheet, Image, Alert } from 'react-native'
 import React, { useEffect } from 'react'
 import { screenHeight, screenWidth } from '@utils/Scaling'
 import Logo from '@assets/images/splash_logo.jpeg'
@@ -60,8 +60,8 @@ const SplashScreen = () => {
 
                     console.log("access token expires")
                     // if token expires but refreshToken not expires , then refreshtoken will refresh accessToken
-                    //             // refresh_token()
-                    //             // await refetchUser(setUser)
+                    refresh_token()
+                    await refetchUser(setUser)
 
                 } catch (error) {
                     console.log("error ==================== ", error)

@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 
 interface InputProps {
-    left: React.ReactNode,
+    left?: React.ReactNode,
     onclear?: () => void,
     right?: boolean
 }
@@ -62,7 +62,10 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.6,
         shadowRadius: 2,
         shadowColor: Colors.border,
-        borderColor: Colors.border
+        borderColor: Colors.border,
+        marginTop: 10,
+        marginBottom: 10
+
 
     },
     inputContainer: {
