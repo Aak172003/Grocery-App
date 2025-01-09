@@ -28,7 +28,7 @@ const Navigation = () => {
                 <Stack.Screen
                     name="ProductDashboard"
                     component={ProductDashboard}
-                    options={{ headerShown: true }}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="DeliveryDashboard"
