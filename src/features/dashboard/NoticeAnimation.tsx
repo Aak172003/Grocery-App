@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Animated as RNAnimated } from 'react-native'
+import { View,  StyleSheet, Animated as RNAnimated } from 'react-native'
 import React, { FC } from 'react'
 import { NoticeHeight } from '@utils/Scaling';
 import Notice from '@components/dashBoard/Notice';
@@ -10,16 +10,13 @@ const NoticeAnimation: FC<{ noticePosition: any; children: React.ReactElement }>
         <View style={styles.container}>
 
             <RNAnimated.View style={[styles.noticeContainer
-                // ,
-                // {
-                //     transform: [{ translateY: noticePosition }]
-                // }
+                ,
+                {
+                    transform: [{ translateY: noticePosition }]
+                }
             ]}>
                 <Notice />
-
             </RNAnimated.View>
-
-
             <RNAnimated.View style={[styles.contentContainer, {
                 paddingTop: noticePosition.interpolate({
                     inputRange: [NOTICE_HEIGHT, 0],
