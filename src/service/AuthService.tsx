@@ -12,7 +12,6 @@ export const customerLogin = async (phoneNo: string) => {
     console.log("phoneNo :::::::::::::::::: ", phoneNo)
     try {
 
-        console.log("inside 11111111111111111111111111111111111111111111111111111111")
         const { data } = await axios.post(`http://192.168.29.236:8000/api/v1/customer/login`, { phone: phoneNo })
 
         console.log("2222222222222222222222222222222222")
