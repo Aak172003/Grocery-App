@@ -1,16 +1,26 @@
 import { Text, StyleSheet, Image } from 'react-native'
 import React, { FC } from 'react'
-import Animated from 'react-native-reanimated'
+import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated'
 import LinearGradient from 'react-native-linear-gradient'
 import { darkWeatherColors } from '@utils/Constants'
 import { screenHeight, screenWidth } from '@utils/Scaling'
 import cloudImage from '../../assets/images/cloud.png'
 import rainView from '../../assets/animations/raining.json'
 import LottieView from 'lottie-react-native'
+import { useCollapsibleContext } from '@r0b0t3d/react-native-collapsible'
 
 const Visuals: FC = () => {
+
+
+    const { scrollY } = useCollapsibleContext()
+
+    const headerAnimatedStyle = useAnimatedStyle(() => {
+        const opacity = interpolate(scrollY.value, [0, 120], [1, 0])
+
+        return { opacity }
+    })
     return (
-        <Animated.View style={[styles.container]}>
+        <Animated.View style={[styles.container, headerAnimatedStyle]}>
             <Text>Visuals</Text>
             <LinearGradient colors={darkWeatherColors} style={styles.gradient} />
             <Image source={cloudImage} style={styles.cloud} />
@@ -22,9 +32,12 @@ const Visuals: FC = () => {
                 style={styles.lottie}
                 source={rainView}
             />
+            
         </Animated.View>
     )
 }
+
+
 
 
 const styles = StyleSheet.create({

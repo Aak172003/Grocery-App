@@ -42,10 +42,13 @@ const Header: FC<{ showNotice: () => void }> = ({ showNotice }) => {
 
 
             </TouchableOpacity>
+
+
+
+            <TouchableOpacity>
+                <Icon name='account-circle-outline' size={RFValue(36)} color="#fff" />
+            </TouchableOpacity>
         </View>
-
-
-
     )
 }
 

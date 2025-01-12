@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "npx patch-package"
   },
   "dependencies": {
     "@homielab/react-native-auto-scroll": "^0.0.10",
@@ -26,7 +27,9 @@
     "react-native-mmkv": "^3.2.0",
     "react-native-pager-view": "^6.6.1",
     "react-native-reanimated": "^3.16.6",
+    "react-native-reanimated-carousel": "^3.5.1",
     "react-native-responsive-fontsize": "^0.5.1",
+    "react-native-rolling-bar": "^1.0.0",
     "react-native-safe-area-context": "^5.0.0",
     "react-native-screens": "^4.4.0",
     "react-native-svg": "^15.10.1",

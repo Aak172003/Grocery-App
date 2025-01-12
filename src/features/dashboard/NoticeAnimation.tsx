@@ -5,6 +5,7 @@ import Notice from '@components/dashBoard/Notice';
 
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12)
+
 const NoticeAnimation: FC<{ noticePosition: any; children: React.ReactElement }> = ({ noticePosition, children }) => {
     return (
         <View style={styles.container}>
@@ -20,7 +21,7 @@ const NoticeAnimation: FC<{ noticePosition: any; children: React.ReactElement }>
             <RNAnimated.View style={[styles.contentContainer, {
                 paddingTop: noticePosition.interpolate({
                     inputRange: [NOTICE_HEIGHT, 0],
-                    outputRange: [0, NOTICE_HEIGHT + 20]
+                    outputRange: [0, NoticeHeight + 20]
                 })
             }]}>
                 {children}

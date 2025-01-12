@@ -4,8 +4,12 @@ import { useAuthStore } from '@state/authStore'
 import NoticeAnimation from './NoticeAnimation'
 import { NoticeHeight } from '@utils/Scaling'
 import Visuals from './Visuals'
-import { CollapsibleContainer, CollapsibleHeaderContainer, withCollapsibleContext } from '@r0b0t3d/react-native-collapsible'
+import { CollapsibleContainer, CollapsibleHeaderContainer, CollapsibleScrollView, withCollapsibleContext } from '@r0b0t3d/react-native-collapsible'
 import AnimatedHeader from './AnimatedHeader'
+import StickySearchBar from './StickySearchBar'
+import CustomText from '@components/ui/CustomText'
+import { RFValue } from 'react-native-responsive-fontsize'
+import { Fonts } from '@utils/Constants'
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12)
 const ProductDashboard = () => {
@@ -61,7 +65,35 @@ const ProductDashboard = () => {
                                     return () => clearTimeout(timeoutId)
                                 }}
                             />
+                            <StickySearchBar />
                         </CollapsibleHeaderContainer>
+
+
+                        {/* Scrollable Content */}
+
+                        <CollapsibleScrollView nestedScrollEnabled style={styles.panelContainer} showsVerticalScrollIndicator={false}>
+
+                            {/* <ContentContainer /> */}
+
+                            <View style={{ backgroundColor: "#F8F8F8", padding: 20 }}>
+                                <CustomText
+                                    fontSize={RFValue(32)}
+                                    fontFamily={Fonts.Bold}
+                                    style={{ opacity: 0.2 }}
+                                >
+                                    India's last minute app
+                                </CustomText>
+
+                                <CustomText
+                                    fontFamily={Fonts.Bold}
+                                    style={{ marginTop: 10, paddingBottom: 100, opacity: 0.2 }}
+                                >
+                                    Developed By Aakash 
+                                </CustomText>
+                            </View>
+
+                        </CollapsibleScrollView>
+
                     </CollapsibleContainer>
                 </View>
             </>
