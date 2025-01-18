@@ -6,7 +6,7 @@ import AddCarousal from './AddCarousal'
 const ContentContainer = () => {
     return (
         <View style={styles.container}>
-            <AddCarousal />
+            <AddCarousal adData={adData} />
 
         </View>
     )
