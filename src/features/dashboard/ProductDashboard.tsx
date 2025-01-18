@@ -10,6 +10,7 @@ import StickySearchBar from './StickySearchBar'
 import CustomText from '@components/ui/CustomText'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Fonts } from '@utils/Constants'
+import ContentContainer from '@components/dashBoard/ContentContainer'
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12)
 const ProductDashboard = () => {
@@ -73,7 +74,7 @@ const ProductDashboard = () => {
 
                         <CollapsibleScrollView nestedScrollEnabled style={styles.panelContainer} showsVerticalScrollIndicator={false}>
 
-                            {/* <ContentContainer /> */}
+                            <ContentContainer />
 
                             <View style={{ backgroundColor: "#F8F8F8", padding: 20 }}>
                                 <CustomText
@@ -88,7 +89,7 @@ const ProductDashboard = () => {
                                     fontFamily={Fonts.Bold}
                                     style={{ marginTop: 10, paddingBottom: 100, opacity: 0.2 }}
                                 >
-                                    Developed By Aakash 
+                                    Developed By Aakash
                                 </CustomText>
                             </View>
 
