@@ -24,6 +24,9 @@ const ScalePress: FC<scaleProps> = ({ onPress, children, style }) => {
             useNativeDriver: true
         }).start()
     }
+
+
+    
     return (
         <TouchableOpacity
             onPressIn={onPressIn}

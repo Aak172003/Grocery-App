@@ -1,12 +1,22 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import { adData } from '@utils/dummyData'
+import { adData, categories } from '@utils/dummyData'
 import AddCarousal from './AddCarousal'
+import CustomText from '@components/ui/CustomText'
+import { Fonts } from '@utils/Constants'
+import CategoryContainer from './CategoryContainer'
 
 const ContentContainer = () => {
     return (
         <View style={styles.container}>
             <AddCarousal adData={adData} />
+
+
+            <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
+                Grocery and Kitchen
+            </CustomText>
+
+            <CategoryContainer data={categories} />
 
         </View>
     )
@@ -14,7 +24,9 @@ const ContentContainer = () => {
 
 const styles = StyleSheet.create({
     container: {
-        paddingHorizontal: 20
+        flex:1,
+        paddingHorizontal: 20,
+        // backgroundColor:"green"
     }
 })
 export default ContentContainer
