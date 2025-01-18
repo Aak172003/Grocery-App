@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { useSharedValue } from 'react-native-reanimated';
 import Carousel from 'react-native-reanimated-carousel';
 import { screenWidth } from '@utils/Scaling';
+import ScalePress from '@components/ui/ScalePress';
 
 const AddCarousal: FC<{ adData: any }> = ({ adData }) => {
     const progressValue = useSharedValue(0);
@@ -24,15 +25,20 @@ const AddCarousal: FC<{ adData: any }> = ({ adData }) => {
                 mode="parallax"
                 data={adData}
                 modeConfig={{
-                    parallaxScrollingScale: 0.900,
-                    parallaxScrollingOffset: 55,
+                    // parallaxScrollingScale: 0.900,
+                    // parallaxScrollingOffset: 55,
+                    parallaxScrollingScale: 0.94,
+                    parallaxScrollingOffset: 0,
                 }}
                 onProgressChange={(currentProgress) => {
                     const roundedProgress = parseFloat(currentProgress.toFixed(2)); // Limit to 2 decimal places
                     progressValue.value = roundedProgress;
                 }}
                 renderItem={({ item }: any) => (
-                    <Image source={item} style={styles.img} />
+
+                    <ScalePress style={styles.imageContainer}>
+                        <Image source={item} style={styles.img} />
+                    </ScalePress>
                 )}
             />
         </View>
