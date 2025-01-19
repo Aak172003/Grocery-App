@@ -8,8 +8,10 @@ import { Fonts } from '@utils/Constants';
 const CategoryContainer: FC<{ data: any }> = ({ data }) => {
     const renderItems = (items: any[]) => {
         return items.map((item, index) => (
+
+
             <ScalePress
-                onPress={() => navigate('ProductCategories')}
+                onPress={() => navigate('ProductCategories', item)}
                 key={index}
                 style={styles.item}
             >
