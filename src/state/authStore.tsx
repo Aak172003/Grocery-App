@@ -4,8 +4,7 @@ import { createJSONStorage, persist } from 'zustand/middleware'
 import { mmkvstorage } from './storage'
 
 // interface
-// create state like rect useState 
-// -> setter function and getter valriable 
+// create state like rect useState -> setter function and getter valriable 
 
 
 interface authStore {
