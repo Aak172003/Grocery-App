@@ -6,6 +6,9 @@ import { useAuthStore } from '@state/authStore'
 import { resetAndNavigate } from '@utils/NavigationUtils'
 import { appAxios } from './apiInterceptors'
 import { Alert } from 'react-native'
+
+
+
 export const customerLogin = async (phoneNo: string) => {
 
 

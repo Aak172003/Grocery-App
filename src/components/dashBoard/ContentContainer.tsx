@@ -18,13 +18,35 @@ const ContentContainer = () => {
 
             <CategoryContainer data={categories} />
 
+
+            <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
+                Best Sellers
+            </CustomText>
+
+            <CategoryContainer data={categories} />
+
+
+            <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
+                Snaks & Drinks
+            </CustomText>
+
+            <CategoryContainer data={categories} />
+
+
+
+            <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
+               Home & Lifestyle
+            </CustomText>
+
+            <CategoryContainer data={categories} />
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
+        flex: 1,
         paddingHorizontal: 20,
         // backgroundColor:"green"
     }
