@@ -10,15 +10,14 @@ const ProductList: FC<{ data: any }> = ({ data }) => {
         )
     }
     return (
-        <View>
-            <FlatList
-                data={data}
-                keyExtractor={(item) => item._id}
-                renderItem={renderItem}
-                contentContainerStyle={styles.content}
-                numColumns={2}
-            />
-        </View>
+        <FlatList
+            data={data}
+            keyExtractor={(item) => item._id}
+            renderItem={renderItem}
+            style={styles.container}
+            contentContainerStyle={styles.content}
+            numColumns={2}
+        />
     )
 }
 
@@ -28,10 +27,12 @@ const styles = StyleSheet.create({
         flex: 1,
         height: "100%",
         backgroundColor: Colors.backgroundSecondary
+
     },
     content: {
         paddingVertical: 10,
         paddingBottom: 100
+
     }
 })
 export default ProductList
