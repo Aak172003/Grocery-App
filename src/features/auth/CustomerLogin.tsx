@@ -1,34 +1,27 @@
-import { Alert, Animated, Image, Keyboard, SafeAreaView, StyleSheet, View } from 'react-native';
-import React, { useEffect, useRef, useState } from 'react';
+import { Alert, Image, Keyboard, SafeAreaView, StyleSheet, View } from 'react-native';
+import React, { useState } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView';
 import ProductSlider from '@components/login/ProductSlider';
 import logo from '../../assets/images/logo.png';
 import CustomText from '@components/ui/CustomText';
-import { Colors, Fonts, lightColors } from '@utils/Constants';
+import { Colors, Fonts } from '@utils/Constants';
 import CustomInput from '@components/ui/CustomInput';
 import { TEXT_APP_SLOGAN } from '../../../text';
 import CustomButoon from '@components/ui/CustomButton';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { resetAndNavigate } from '@utils/NavigationUtils';
 import { customerLogin } from '@service/AuthService';
-const CustomerLogin = () => {
 
+const CustomerLogin = () => {
     const [phoneNumber, setPhoneNumber] = useState("")
     const [loading, setLoading] = useState(false)
 
     const handleAuth = async () => {
-        console.log("click on continue ")
         Keyboard.dismiss()
         setLoading(true)
         try {
-
-
-            console.log("inside try")
             const data = await customerLogin(phoneNumber)
-
-            // console.log("data -------------------- ", data)
-
             if (data) {
                 resetAndNavigate('ProductDashboard')
             } else {
@@ -50,20 +43,14 @@ const CustomerLogin = () => {
                 <CustomSafeAreaView>
                     <ProductSlider />
 
-
-
                     <View style={styles.content} >
                         <Image source={logo} style={styles.logo} />
-
                         <CustomText varient='h2' fontFamily={Fonts.Bold}>
                             {TEXT_APP_SLOGAN}
                         </CustomText>
-
                         <CustomText varient='h5' fontFamily={Fonts.SemiBold} style={styles.text}>
                             Login or SignUp
                         </CustomText>
-
-
                         <CustomInput
                             onChangeText={(text) => { setPhoneNumber(text.slice(0, 10)) }}
                             onclear={() => { setPhoneNumber('') }}
@@ -77,8 +64,6 @@ const CustomerLogin = () => {
                             placeholder='Enter Mobile Number'
                             inputMode='numeric'
                         />
-
-
                         <CustomButoon
                             disabled={phoneNumber?.length != 10}
                             onPress={() => handleAuth()}

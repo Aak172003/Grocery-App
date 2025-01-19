@@ -5,6 +5,7 @@ import clockIcon from '@assets/icons/clock.png'
 import CustomText from '@components/ui/CustomText'
 import { Colors, Fonts } from '@utils/Constants'
 import { RFValue } from 'react-native-responsive-fontsize'
+import UniversalAdd from '@components/ui/UniversalAdd'
 
 const ProductItem: FC<{ item: any, index: number }> = ({ item, index }) => {
 
@@ -27,14 +28,16 @@ const ProductItem: FC<{ item: any, index: number }> = ({ item, index }) => {
                     {item?.name}
                 </CustomText>
                 <View style={styles.priceContainer}>
-                    <View>
-                        <CustomText varient='h8' fontFamily={Fonts.Medium}>
-                            ₹{item?.price}
-                        </CustomText>
-                        <CustomText varient='h8' fontFamily={Fonts.Medium} style={{ opacity: 0.7, textDecorationLine: 'line-through' }}>
-                            ₹{item?.discountPrice}
-                        </CustomText>
-                    </View>
+                    <CustomText varient='h8' fontFamily={Fonts.Medium}>
+                        ₹{item?.price}
+                    </CustomText>
+                    <CustomText varient='h8' fontFamily={Fonts.Medium} style={{ opacity: 0.7, textDecorationLine: 'line-through' }}>
+                        ₹{item?.discountPrice}
+                    </CustomText>
+                </View>
+
+                <View>
+                    <UniversalAdd item={item} />
                 </View>
             </View>
         </View>
