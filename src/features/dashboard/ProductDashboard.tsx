@@ -42,8 +42,6 @@ const ProductDashboard: FC = () => {
             transform: [{ translateY }]
         }
     })
-    console.log("this is user ------ product Dashboard---------------- ", user)
-
     const noticePosition = useRef(new RNAnimated.Value(NOTICE_HEIGHT)).current
     const slideUp = () => {
         RNAnimated.timing(noticePosition, {
@@ -71,12 +69,9 @@ const ProductDashboard: FC = () => {
 
     return (
         <NoticeAnimation noticePosition={noticePosition} >
-
             <>
                 <Visuals />
                 <SafeAreaView />
-
-                {/* Implement bottom to top scroll */}
                 <Animated.View style={[styles.backToTop, backToTopStyle]}>
                     <TouchableOpacity style={{ flexDirection: "row", alignItems: "center", gap: 6 }}
                         onPress={() => {
