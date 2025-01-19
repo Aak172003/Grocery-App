@@ -5,8 +5,6 @@ import CustomText from '@components/ui/CustomText'
 import { RFValue } from 'react-native-responsive-fontsize'
 import { Colors } from '@utils/Constants'
 
-
-
 interface sidebarProps {
     selectedCategory: any,
     categories: any,
@@ -16,19 +14,13 @@ interface sidebarProps {
 const SideBar: FC<sidebarProps> = ({ categories, selectedCategory, onCategoryPress }) => {
 
     const scrollViewRef = useRef<ScrollView>(null)
-
-
     const indicatorPosition = useSharedValue(0)
 
-
     const animatedValue = categories?.map(() => useSharedValue(0))
-
-
 
     const indicatorStyle = useAnimatedStyle(() => ({
         transform: [{ translateY: indicatorPosition.value }]
     }))
-
 
     useEffect(() => {
         let targetIndex = -1
@@ -36,9 +28,7 @@ const SideBar: FC<sidebarProps> = ({ categories, selectedCategory, onCategoryPre
             const isSelected = selectedCategory?._id === category?._id
             animatedValue[index].value = withTiming(isSelected ? 2 : -15, { duration: 500 })
 
-
             if (isSelected) targetIndex = index
-
 
             if (targetIndex !== -1) {
                 indicatorPosition.value = withTiming(targetIndex * 100, { duration: 500 })
@@ -53,55 +43,42 @@ const SideBar: FC<sidebarProps> = ({ categories, selectedCategory, onCategoryPre
         });
     }, [selectedCategory])
 
-
-
     return (
         <View style={styles.sideBar}>
             <ScrollView ref={scrollViewRef}
                 contentContainerStyle={{ paddingBottom: 50 }}
                 showsVerticalScrollIndicator={false}>
-
-
                 <Animated.View style={[styles.indicator, indicatorStyle]} />
                 <Animated.View>
                     {
                         categories?.map((category: any, index: number) => {
-
-
                             const animatedStyle = useAnimatedStyle(() => ({
                                 bottom: animatedValue[index].value
                             }))
                             return (
                                 <TouchableOpacity
-
                                     key={index}
                                     activeOpacity={1}
                                     style={styles.categoryButton}
                                     onPress={() => onCategoryPress(category)}
                                 >
                                     <View style={[styles.imageContainer,
-
                                     selectedCategory._id === category?._id && styles.selectedImageContainer
                                     ]}>
-
                                         <Animated.Image
-
                                             source={{ uri: category.image }}
                                             style={[styles.image, animatedStyle]}
                                         />
 
                                     </View>
-
                                     <CustomText fontSize={RFValue(7)} style={{ textAlign: "center" }}>
                                         {category.name}
                                     </CustomText>
-
                                 </TouchableOpacity>
                             )
                         })
                     }
                 </Animated.View>
-
             </ScrollView>
         </View>
     )
