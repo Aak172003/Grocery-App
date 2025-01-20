@@ -8,9 +8,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const Header: FC<{ showNotice: () => void }> = ({ showNotice }) => {
 
-
     const { user } = useAuthStore()
-    console.log("inside Header file ---------------- ", user)
 
     return (
         <View style={styles.subContainer}>
@@ -19,12 +17,10 @@ const Header: FC<{ showNotice: () => void }> = ({ showNotice }) => {
                     Delivery in
                 </CustomText>
 
-
                 <View style={styles.flexRowGap}>
                     <CustomText fontFamily={Fonts.SemiBold} varient='h2' style={styles.text}>
                         10 Min
                     </CustomText>
-
                     <TouchableOpacity style={styles.noticeButton} onPress={showNotice}>
                         <CustomText fontSize={RFValue(10)} fontFamily={Fonts.SemiBold} style={{ color: "#3B4886" }}>
                             ☁️Rain
@@ -36,14 +32,9 @@ const Header: FC<{ showNotice: () => void }> = ({ showNotice }) => {
                     <CustomText varient='h8' numberOfLines={1} fontFamily={Fonts.Medium} style={styles.text2}>
                         {user?.address || "KnoWhere ? SomeWhere "}
                     </CustomText>
-
                     <Icon name='menu-down' color="#fff" size={RFValue(20)} style={{ bottom: -1 }} />
                 </View>
-
-
             </TouchableOpacity>
-
-
 
             <TouchableOpacity>
                 <Icon name='account-circle-outline' size={RFValue(36)} color="#fff" />
@@ -51,8 +42,6 @@ const Header: FC<{ showNotice: () => void }> = ({ showNotice }) => {
         </View>
     )
 }
-
-
 
 const styles = StyleSheet.create({
     subContainer: {

@@ -16,26 +16,17 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import CustomButoon from '@components/ui/CustomButton'
 
 const DeliveryLogin: FC = () => {
-
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-
     const [loading, setLoading] = useState(false)
 
     const handleLogin = async () => {
-
-        console.log("click on Delivery Login ")
         Keyboard.dismiss()
         setLoading(true)
         try {
 
             console.log("inside try")
             const data = await DeliveryPartnerLogin(email, password)
-
-
-            // console.log("data -------------------- ", data)
-
             if (data) {
                 resetAndNavigate('DeliveryDashboard')
             } else {

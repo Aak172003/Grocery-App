@@ -5,15 +5,11 @@ import CustomText from '@components/ui/CustomText'
 import UniversalAdd from '@components/ui/UniversalAdd'
 
 const OrderItem: FC<{ item: any }> = ({ item }) => {
-
-    console.log("item this is product order item --------------------- ", item)
     return (
         <View style={styles.flexRow}>
-
             <View style={styles.imageContainer}>
                 <Image source={{ uri: item?.item?.image }} style={styles.image} />
             </View>
-
             <View style={{ width: "55%" }}>
                 <CustomText numberOfLines={2} varient='h8' fontFamily={Fonts.Medium}>
                     {item?.item?.name}
@@ -21,10 +17,7 @@ const OrderItem: FC<{ item: any }> = ({ item }) => {
                 <CustomText varient='h9' >
                     {item?.item?.quantity}
                 </CustomText>
-
-
             </View>
-
 
             <View style={{ width: '20%', alignItems: 'flex-end' }}>
                 <UniversalAdd item={item?.item} />
@@ -36,8 +29,6 @@ const OrderItem: FC<{ item: any }> = ({ item }) => {
     )
 }
 
-
-
 const styles = StyleSheet.create({
     image: {
         width: 40,
@@ -48,7 +39,6 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 15,
         width: '17%'
-
     },
     flexRow: {
         alignItems: 'center',
@@ -60,4 +50,5 @@ const styles = StyleSheet.create({
         borderTopColor: Colors.border
     }
 })
+
 export default OrderItem

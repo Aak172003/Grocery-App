@@ -9,8 +9,6 @@ import CustomText from './CustomText'
 const CustomHeader: FC<{ title: string, search?: boolean }> = ({ title, search }) => {
     return (
         <SafeAreaView>
-
-
             <View style={styles.flexRow}>
                 <Pressable onPress={() => goBack()}>
                     <Icon name='chevron-back' color={Colors.text} size={RFValue(16)} />
@@ -19,7 +17,6 @@ const CustomHeader: FC<{ title: string, search?: boolean }> = ({ title, search }
                 <CustomText style={styles.text} varient='h5' fontFamily={Fonts.SemiBold}>
                     {title}
                 </CustomText>
-
                 <View >
                     {search && <Icon name='search' size={RFValue(16)} color={Colors.text} />}
                 </View>

@@ -31,11 +31,10 @@ const AddCarousal: FC<{ adData: any }> = ({ adData }) => {
                     parallaxScrollingOffset: 0,
                 }}
                 onProgressChange={(currentProgress) => {
-                    const roundedProgress = parseFloat(currentProgress.toFixed(2)); // Limit to 2 decimal places
+                    const roundedProgress = parseFloat(currentProgress.toFixed(2));
                     progressValue.value = roundedProgress;
                 }}
                 renderItem={({ item }: any) => (
-
                     <ScalePress style={styles.imageContainer}>
                         <Image source={item} style={styles.img} />
                     </ScalePress>
