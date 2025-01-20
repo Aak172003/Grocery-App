@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     },
     gestureArea: {
         ...StyleSheet.absoluteFillObject,
-        backgroundColor: 'red'
+        // backgroundColor: 'red'
     },
 })
 

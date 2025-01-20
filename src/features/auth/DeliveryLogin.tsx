@@ -55,17 +55,12 @@ const DeliveryLogin: FC = () => {
             <CustomSafeAreaView>
                 <ScrollView keyboardShouldPersistTaps="handled" keyboardDismissMode='on-drag'>
                     <View style={styles.container}>
-
-
                         <View style={styles.lottieContainer}>
                             <LottieView autoPlay loop style={styles.lottie} source={deliveryLoginAnnimations} />
                         </View>
-
-
                         <CustomText varient='h3' fontFamily={Fonts.Bold}>
                             Delivery Partner Portal
                         </CustomText>
-
                         <CustomText varient='h6' style={styles.text} fontFamily={Fonts.SemiBold}>
                             Faster than Flash ⚡⚡️
                         </CustomText>
