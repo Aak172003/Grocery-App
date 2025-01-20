@@ -5,6 +5,7 @@ import { Colors } from '@utils/Constants'
 import SideBar from './SideBar'
 import { getAllCategories, getProductByCategories } from '@service/productService'
 import ProductList from './ProductList'
+import WithCartHOC from '@features/cart/WithCartHOC'
 
 const ProductCategories = ({ route }: any) => {
     const { params } = route;
@@ -104,4 +105,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ProductCategories
+export default WithCartHOC(ProductCategories)

@@ -32,6 +32,7 @@
     "@state/*":["state/*"],
     "@utils/*":["utils/*"],
     "@types/*":["types/*"],
+
   }
   }
 }
