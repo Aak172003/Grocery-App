@@ -80,7 +80,6 @@ const ProductCategories = ({ route }: any) => {
     );
 }
 
-
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,

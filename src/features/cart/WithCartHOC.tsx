@@ -15,13 +15,10 @@ const WithCartHOC = <P extends object>(WrappedComponent: React.ComponentType<P>)
         return (
             <View style={styles.container}>
                 <WrappedComponent  {...props} />
-
-
                 <CartAnnimationWrapper cartCount={cartCount}>
                     <CartSummary
                         cartCount={cartCount}
                         cartImage={cart![0]?.item?.image || defaultImage}
-
                     />
                 </CartAnnimationWrapper>
             </View>

@@ -16,14 +16,10 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12)
 
-
-
 const ProductDashboard: FC = () => {
     const { user } = useAuthStore()
 
-
     const { scrollY, expand } = useCollapsibleContext()
-
 
     const previousScroll = useRef<number>(0)
 
@@ -33,10 +29,7 @@ const ProductDashboard: FC = () => {
         const opacity = withTiming(isScrollingUp ? 1 : 0, { duration: 300 })
         const translateY = withTiming(isScrollingUp ? 0 : 10, { duration: 300 })
 
-
-
         previousScroll.current = scrollY.value
-
         return {
             opacity,
             transform: [{ translateY }]
@@ -63,7 +56,6 @@ const ProductDashboard: FC = () => {
         const timeoutId = setTimeout(() => {
             slideUp()
         }, 3500)
-
         return () => clearTimeout(timeoutId)
     }, [])
 
@@ -136,8 +128,6 @@ const ProductDashboard: FC = () => {
         </NoticeAnimation>
     )
 }
-
-
 
 const styles = StyleSheet.create({
     panelContainer: {

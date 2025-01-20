@@ -45,9 +45,7 @@ export const useCartStore = create<CartStore>()(
                     }
                     // setter function
                     set({ cart: updatedCart })
-
                 }
-
                 // When item not exist
                 else {
                     set({ cart: [...currentCart, { _id: item._id, item: item, count: 1 }] })
@@ -57,7 +55,6 @@ export const useCartStore = create<CartStore>()(
             clearCart: () => set({ cart: [] }),
 
             removeItem: (id) => {
-
                 // First check is item exist or not 
                 // This is getter function
                 const currentCart = get().cart

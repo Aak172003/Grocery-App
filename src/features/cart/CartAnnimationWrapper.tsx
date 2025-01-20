@@ -7,10 +7,7 @@ interface CartAnnimationWrapperProps {
     children: React.ReactNode
 }
 
-
 const CartAnnimationWrapper: FC<CartAnnimationWrapperProps> = ({ cartCount, children }) => {
-
-
     const slideAnim = useRef(new Animated.Value(0)).current
 
     const [hasAnimated, setHasAnimated] = useState(false)
@@ -36,7 +33,6 @@ const CartAnnimationWrapper: FC<CartAnnimationWrapperProps> = ({ cartCount, chil
 
     }, [cartCount, hasAnimated])
 
-
     const slideUpStyle = {
         transform: [
             {
@@ -55,14 +51,4 @@ const CartAnnimationWrapper: FC<CartAnnimationWrapperProps> = ({ cartCount, chil
     )
 }
 
-
 export default CartAnnimationWrapper
-
-
-
-
-
-
-
-
-
