@@ -24,11 +24,8 @@ const ProductSlider = () => {
             } else {
                 direction = translationY > 0 ? 'down' : 'up'
             }
-
             const newSequence = [...gestureSequence, direction].slice(-5)
             setGestureSequence(newSequence)
-            console.log('direction ------------- ', direction)
-
             if (newSequence.join('') === 'up') {
                 setGestureSequence([])
                 console.log('Gesture Sequence Matched!')
@@ -36,9 +33,6 @@ const ProductSlider = () => {
             }
         }
     }
-
-
-    console.log("gestureSequence :::::::::::::; ", gestureSequence)
 
     const onGestureEvent = Animated.event(
         [
@@ -68,7 +62,6 @@ const ProductSlider = () => {
                         ))}
                     </View>
                 </AutoScroll>
-
 
                 {/* From here Pan Gesture Handler Implement */}
                 <PanGestureHandler onHandlerStateChange={handleGesture} onGestureEvent={onGestureEvent}>

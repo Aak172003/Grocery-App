@@ -11,35 +11,25 @@ const ContentContainer = () => {
         <View style={styles.container}>
             <AddCarousal adData={adData} />
 
-
             <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
                 Grocery and Kitchen
             </CustomText>
-
             <CategoryContainer data={categories} />
-
 
             <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
                 Best Sellers
             </CustomText>
-
             <CategoryContainer data={categories} />
-
 
             <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
                 Snaks & Drinks
             </CustomText>
-
             <CategoryContainer data={categories} />
-
-
 
             <CustomText varient='h5' fontFamily={Fonts.SemiBold}>
-               Home & Lifestyle
+                Home & Lifestyle
             </CustomText>
-
             <CategoryContainer data={categories} />
-
         </View>
     )
 }
@@ -48,7 +38,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 20,
-        // backgroundColor:"green"
     }
 })
 export default ContentContainer

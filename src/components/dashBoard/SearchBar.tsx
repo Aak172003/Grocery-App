@@ -12,21 +12,20 @@ const SearchBar: FC = () => {
             <Icon name='search' color={Colors.text} size={RFValue(20)} />
 
             <RollingBar interval={3000} defaultStyle={false} customStyle={styles.textContainer}>
-                <CustomText varient='h6' fontFamily={Fonts.Medium} >Aman</CustomText>
-                <CustomText varient='h6' fontFamily={Fonts.Medium} >Aakash</CustomText>
-
-                <CustomText varient='h6' fontFamily={Fonts.Medium} >Papa</CustomText>
-
-                <CustomText varient='h6' fontFamily={Fonts.Medium} >Mummy</CustomText>
-
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Milk, Curd & Paneer"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Pharma & Wellness"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Vegetables & Fruits"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Munchies"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Home & Office"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Baby Care"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Ata, Rice & Dal"</CustomText>
+                <CustomText varient='h6' fontFamily={Fonts.Medium} >Search "Cleaning Essentials"</CustomText>
             </RollingBar>
-
             <View style={styles.divider} />
             <Icon name='mic' color={Colors.text} size={RFValue(20)} />
         </TouchableOpacity>
     )
 }
-
 
 const styles = StyleSheet.create({
     conatiner: {

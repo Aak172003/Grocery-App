@@ -28,9 +28,7 @@ const CustomInput: FC<InputProps & React.ComponentProps<typeof TextInput>> = ({
                 {...props}
                 style={styles.inputContainer}
                 placeholderTextColor="#ccc"
-
             />
-
             <View style={styles.icon}>
                 {props.value?.length != 0 && right &&
                     <TouchableOpacity onPress={onclear}>
@@ -38,7 +36,6 @@ const CustomInput: FC<InputProps & React.ComponentProps<typeof TextInput>> = ({
                     </TouchableOpacity>
                 }
             </View>
-
         </View>
     )
 }

@@ -39,13 +39,7 @@ const SplashScreen = () => {
             const decodedAccessToken = jwtDecode<DecodedToken>(accessToken)
             const decodedRefreshToken = jwtDecode<DecodedToken>(refreshToken)
 
-
-            console.log("decodedAccessToken :::::::::::::::: ", decodedAccessToken)
-            console.log("decodedRefreshToken :::::::::::::::: ", decodedRefreshToken)
-
             const currentTime = Date.now() / 1000
-
-
 
             // so basically first expires accesstoken , 
             if (decodedRefreshToken?.exp < currentTime) {
@@ -57,20 +51,16 @@ const SplashScreen = () => {
 
             if (decodedAccessToken?.exp < currentTime) {
                 try {
-
                     console.log("access token expires")
                     // if token expires but refreshToken not expires , then refreshtoken will refresh accessToken
                     refresh_token()
                     await refetchUser(setUser)
 
                 } catch (error) {
-                    console.log("error ==================== ", error)
                     Alert.alert("There was an error while refreshing accessToken")
                     return false
                 }
             }
-
-
 
             if (user?.role == "Customer") {
                 resetAndNavigate("ProductDashboard")
@@ -93,7 +83,6 @@ const SplashScreen = () => {
                 Alert.alert("Sorry we need location service to give you better shopping experience")
             }
         }
-
         const timeoutId = setTimeout(fetchUserLocation, 5000)
         return () => clearTimeout(timeoutId)
     }, [])
@@ -107,7 +96,6 @@ const SplashScreen = () => {
 }
 
 export default SplashScreen
-
 
 const Styles = StyleSheet.create({
     container: {
