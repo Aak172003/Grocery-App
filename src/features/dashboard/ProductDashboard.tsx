@@ -13,6 +13,7 @@ import { Fonts } from '@utils/Constants'
 import ContentContainer from '@components/dashBoard/ContentContainer'
 import Animated, { useAnimatedStyle, withTiming } from 'react-native-reanimated'
 import Icon from 'react-native-vector-icons/Ionicons'
+import WithCartHOC from '@features/cart/WithCartHOC'
 
 const NOTICE_HEIGHT = -(NoticeHeight + 12)
 
@@ -154,4 +155,4 @@ const styles = StyleSheet.create({
 
 
 // to use collapsable container e need to wrap inside withCollapsable context
-export default withCollapsibleContext(ProductDashboard)
+export default WithCartHOC(withCollapsibleContext(ProductDashboard))
