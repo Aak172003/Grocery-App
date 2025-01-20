@@ -64,9 +64,6 @@ const DeliveryLogin: FC = () => {
                         <CustomText varient='h6' style={styles.text} fontFamily={Fonts.SemiBold}>
                             Faster than Flash ⚡⚡️
                         </CustomText>
-
-
-
                         <CustomInput
                             onChangeText={setEmail}
                             value={email}
@@ -83,10 +80,7 @@ const DeliveryLogin: FC = () => {
                             inputMode='email'
                             right={false}
                         />
-
-
                         <CustomInput
-
                             onChangeText={setPassword}
                             value={password}
                             placeholder='Enter Password'
@@ -98,30 +92,19 @@ const DeliveryLogin: FC = () => {
                                     size={RFValue(18)}
                                 />
                             }
-
                             secureTextEntry={true}
                             right={false}
                         />
-
-
                         <CustomButoon
                             disabled={email.length == 0 || password.length < 8}
                             title='Delivery Partner Login'
                             onPress={handleLogin}
                             loading={loading}
                         />
-
-
-
-
-
-
                     </View>
                 </ScrollView>
             </CustomSafeAreaView>
         </GestureHandlerRootView>
-
-
     )
 }
 
